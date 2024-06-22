@@ -17,9 +17,9 @@ Memory::Memory() noexcept
 
 	// New Steam Overlay May 24th/25th 2021
 	if (present == 2)
-		present = MemorySearch::findPattern("gameoverlayrenderer", "\xFF\x15????\x8B\xF0\x85\xFF") + 2;
+		present = MemorySearch::findPattern("gameoverlayrenderer", "\x8B\x4D?\xA1????\x51\xFF") + 4;
 	if (reset == 9)
-		reset = MemorySearch::findPattern("gameoverlayrenderer", "\xC7\x45?????\xFF\x15????\x8B\xD8") + 9;
+		reset = MemorySearch::findPattern("gameoverlayrenderer", "\xE8????\xA1????\x57\x53") + 6;
 
 	clientMode = **reinterpret_cast<ClientMode ***>((*reinterpret_cast<uintptr_t **>(interfaces->client))[10] + 5);
 	input = *reinterpret_cast<Input **>((*reinterpret_cast<uintptr_t **>(interfaces->client))[16] + 1);
